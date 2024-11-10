@@ -1,43 +1,13 @@
-# Nuxt 3 Vuetify Template
+# UI Collection for Nuxt 3
 
-This is a Nuxt 3 starter template that comes with the following packages pre-installed:
+This project is a UI component collection built with Nuxt 3 and Vuetify, designed to offer a variety of ready-to-use, elegant UI elements such as cards, carousels, grids, and more. Each component provides CSS-only and Vuetify-based implementations, allowing easy integration and flexibility depending on your project’s requirements.
 
-- **Vuetify** for UI components (`vuetify-nuxt-module`)
-- **Three.js** (`three`) for 3D rendering
-- **GSAP** (`gsap`) for animations
-- **Nuxt Particles** (`nuxt-particles`) for particle effects
-- **@mdi/font** for Material Design Icons
-- **TypeScript** and **ESLint** configured for a better development experience
+## Features
 
-Additionally, there is an example of a basic portfolio implementation included.
-
-![alt text](image.png)
-
-```
-📦components
- ┣ 📂Animation
- ┃ ┣ 📜ModelRender.vue
- ┃ ┣ 📜Particles.vue
- ┃ ┗ 📜TypedText.vue
- ┣ 📂Card
- ┃ ┣ 📜ProjectCard.vue
- ┃ ┗ 📜SkillsCard.vue
- ┣ 📂Form
- ┃ ┗ 📜ContactForm.vue
- ┣ 📂Layout
- ┃ ┣ 📜AppFooter.vue
- ┃ ┗ 📜AppHeader.vue
- ┗ 📂Section
- ┃ ┣ 📜About.vue
- ┃ ┣ 📜Projects.vue
- ┃ ┣ 📜Skills.vue
- ┃ ┗ 📜Timeline.vue
-```
-
-These components can be used to build and customize a simple portfolio layout with sections for about, projects, skills, and a timeline.
-
-
-
+- **Pre-designed UI Components**: Includes a variety of UI elements like cards, carousels, and grids.
+- **CSS-only and Vuetify Options**: Choose between CSS-only or Vuetify implementations for each component.
+- **Elegant and Clean Design**: All components are designed for visual consistency and ease of customization.
+- **Optimized for Nuxt 3**: Fully compatible with Nuxt 3, offering fast and efficient rendering.
 
 ## Installation
 
@@ -46,13 +16,13 @@ To get started, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/oooFreaKooo/nuxt-vuetify-template.git
+   git clone https://github.com/oooFreaKooo/UI-Collection.git
    ```
 
 2. Navigate into the project directory:
 
    ```bash
-   cd nuxt-vuetify-template
+   cd UI-COLLECTION
    ```
 
 3. Install the dependencies using Yarn:
@@ -66,6 +36,16 @@ To get started, follow these steps:
    ```bash
    yarn dev
    ```
+
+## Available Components
+
+- **Cards**: Multiple card layouts with options for CSS-only and Vuetify implementations.
+- **Carousels**: Image and content carousels with responsive design.
+- **Grids**: Customizable grid layouts for displaying content in structured ways.
+
+## Usage
+
+After starting the development server, navigate to the desired component in the UI collection to explore its options and usage examples. Each component will have buttons to directly access either the CSS-only or Vuetify version of the component.
 
 ## Build for Production
 
@@ -95,6 +75,11 @@ To automatically fix linting issues, run:
 yarn lint:fix
 ```
 
-## Example Portfolio
+## Contribution
 
-This template includes an example implementation of a basic portfolio page. You can customize and build upon it to fit your needs.
+If you'd like to contribute new components or improvements, feel free to open a pull request. We welcome all contributions that help make this UI collection more comprehensive and user-friendly.
+
+## License
+
+This project is licensed under the MIT License.
+

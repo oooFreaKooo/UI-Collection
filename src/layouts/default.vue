@@ -1,4 +1,5 @@
 <template>
+    <AppHeader class="position-relative" />
     <div class="bg-background">
         <slot />
     </div>

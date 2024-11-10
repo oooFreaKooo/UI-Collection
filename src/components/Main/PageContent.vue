@@ -58,8 +58,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue'
-
 interface PageInfo {
     status: string
     color: string

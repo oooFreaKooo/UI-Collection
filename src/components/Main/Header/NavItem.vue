@@ -1,27 +1,25 @@
 <template>
     <v-hover>
-        <v-btn
-            :ripple="false"
-            class="nav-item-hover mx-2"
-            :class="{ 'primary--text': isActive }"
-            @click="navigate"
+        <NuxtLink
+            class="text-decoration-none"
+            :href="href"
         >
-            <v-icon
-                left
-                :class="{ 'notification-pulse': item?.notifications }"
+            <v-btn
+                :ripple="false"
+                class="nav-item-hover mx-2"
+                :class="{ 'primary--text': isActive }"
+                @click="navigate"
             >
-                {{ item?.icon }}
-            </v-icon>
-            {{ item?.title }}
-            <v-scale-transition>
-                <v-badge
-                    v-if="item?.notifications"
-                    :content="item.notifications"
-                    color="error"
-                    class="ml-2 notification-badge"
-                />
-            </v-scale-transition>
-        </v-btn>
+                <v-icon
+                    left
+                    class="notification-pulse mx-3"
+                >
+                    {{ item?.icon }}
+                </v-icon>
+
+                {{ item?.title }}
+            </v-btn>
+        </NuxtLink>
     </v-hover>
 </template>
 
@@ -29,12 +27,12 @@
 interface MenuItem {
     title?: string
     icon?: string
-    notifications?: number
 }
 
 const props = defineProps<{
     item: MenuItem | undefined
     currentPage: string
+    href?: string
 }>()
 
 const emits = defineEmits(['navigate'])

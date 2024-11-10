@@ -1,5 +1,4 @@
 <template>
-    <AppHeader />
     <PageContent
         :current-page="currentPage"
         :page-info="pageInfo"

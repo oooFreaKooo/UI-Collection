@@ -10,15 +10,12 @@
             :current-theme-icon="currentThemeIcon"
         />
         <v-toolbar-title class="text-h5 font-weight-bold primary--text">
-            <span class="mr-1">Creative Nav</span>
-            <v-chip
-                x-small
-                color="primary"
-                text-color="white"
-                class="ml-1"
+            <NuxtLink
+                class="text-decoration-none"
+                to="/"
             >
-                2.0
-            </v-chip>
+                UI Collection
+            </NuxtLink>
         </v-toolbar-title>
 
         <v-spacer />
@@ -28,6 +25,7 @@
             :key="index"
             :item="item"
             :current-page="currentPage"
+            :href="item.href"
             @navigate="handleNavClick"
         />
 
@@ -64,17 +62,17 @@ const currentPage = ref<string>('Welcome')
 const isDark = ref<boolean>(false)
 const currentThemeIcon = ref<string>('mdi-atom')
 
-const menuItems = ref<Array<{ title: string, icon: string, notifications?: number }>>([
-    { title: 'Dashboard', icon: 'mdi-view-dashboard', notifications: 3 },
+const menuItems = ref<Array<{ title: string, icon: string, href?: string }>>([
+    { title: 'Collection', icon: 'mdi-view-dashboard', href: 'collection' },
     { title: 'Analytics', icon: 'mdi-chart-bar' },
     { title: 'Projects', icon: 'mdi-folder-multiple' },
-    { title: 'Team', icon: 'mdi-account-group', notifications: 2 },
+    { title: 'Team', icon: 'mdi-account-group' },
 ])
 
-const userMenuItems = ref<Array<{ title: string, icon: string, color: string, badge?: string }>>([
+const userMenuItems = ref<Array<{ title: string, icon: string, color: string }>>([
     { title: 'Profile', icon: 'mdi-account', color: 'primary' },
     { title: 'Settings', icon: 'mdi-cog', color: 'grey' },
-    { title: 'Messages', icon: 'mdi-email', color: 'blue', badge: '3' },
+    { title: 'Messages', icon: 'mdi-email', color: 'blue' },
     { title: 'Logout', icon: 'mdi-logout', color: 'red' },
 ])
 
