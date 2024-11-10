@@ -7437,6 +7437,7 @@ __metadata:
     sass-loader: "npm:^12.4.0"
     three: "npm:^0.168.0"
     typescript: "npm:~5.5"
+    vite-svg-loader: "npm:^5.1.0"
     vue-tsc: "npm:^2.1.6"
     vuetify-nuxt-module: "npm:^0.18.2"
   languageName: unknown
@@ -9389,7 +9390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svgo@npm:^3.2.0, svgo@npm:^3.3.2":
+"svgo@npm:^3.0.2, svgo@npm:^3.2.0, svgo@npm:^3.3.2":
   version: 3.3.2
   resolution: "svgo@npm:3.3.2"
   dependencies:
@@ -10230,6 +10231,17 @@ __metadata:
     vue: ^3.0.0
     vuetify: ^3.0.0
   checksum: 10c0/23c03bfcb9997e4aeeef7a5ed64f9849189bf1a5599ab228cd9c49c87ef7867f0abc51f3c5a93cf261288b10d3947d529c5399e1d4f720879d8ed18e6f1419d4
+  languageName: node
+  linkType: hard
+
+"vite-svg-loader@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "vite-svg-loader@npm:5.1.0"
+  dependencies:
+    svgo: "npm:^3.0.2"
+  peerDependencies:
+    vue: ">=3.2.13"
+  checksum: 10c0/39f218db6384aec56ec6fb9517723eaee49701225688e1d5f5132f0730605a9e59201464911b19cbfdc647caebacf4c8737dffe2472cd815ebb6645c2292993c
   languageName: node
   linkType: hard
 

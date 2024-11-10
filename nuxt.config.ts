@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
     srcDir: 'src/',
@@ -9,6 +10,7 @@ export default defineNuxtConfig({
         'vuetify-nuxt-module',
         '@nuxt/eslint',
         'nuxt-particles',
+        'vite-svg-loader',
     ],
     vuetify: {
         moduleOptions: {
@@ -44,6 +46,7 @@ export default defineNuxtConfig({
                 propsDestructure: true,
             },
         },
+        plugins: [svgLoader()],
     },
     app: {
         baseURL: '/',

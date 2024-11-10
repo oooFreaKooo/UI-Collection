@@ -2,7 +2,7 @@
     <v-app-bar
         app
         elevation="0"
-        class="nav-blur nav-gradient px-4 mb-3"
+        class="nav-blur nav-gradient px-4"
     >
         <ScrollProgress />
         <UserAvatar

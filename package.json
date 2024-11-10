@@ -29,6 +29,7 @@
     "@nuxt/image": "^1.8.0",
     "gsap": "^3.12.5",
     "three": "^0.168.0",
+    "vite-svg-loader": "^5.1.0",
     "vuetify-nuxt-module": "^0.18.2"
   },
   "packageManager": "yarn@4.4.1"

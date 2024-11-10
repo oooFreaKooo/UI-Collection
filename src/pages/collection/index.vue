@@ -53,8 +53,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const collections = ref([
     {
         title: 'Cards',
@@ -73,6 +71,12 @@ const collections = ref([
         subtitle: 'CSS-only and Vuetify grids for responsive layouts',
         cssLink: 'grids',
         vuetifyLink: 'v-grids',
+    },
+    {
+        title: 'Text',
+        subtitle: 'CSS-only and Vuetify text styles for consistent typography',
+        cssLink: 'text',
+        vuetifyLink: 'v-text',
     },
 ])
 </script>
