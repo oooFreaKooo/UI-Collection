@@ -47,7 +47,7 @@ function replayAnimation () {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../../public/valentin-petrov-m-mal-01.jpg');
+  background-image: url('/images/valentin-petrov-m-mal-01.jpg');
   background-size: cover;
   background-position: center;
   animation: bgZoomIn 4s ease-in-out 1 forwards;
@@ -59,7 +59,7 @@ function replayAnimation () {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../../public/after.png');
+  background-image: url('/images/after.png');
   background-size: cover;
   background-position: top;
   transform: scale(2);

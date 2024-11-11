@@ -64,6 +64,5 @@ export default createConfigForNuxt({
             '@stylistic/space-before-function-paren': [ 'error', 'always' ],
             '@stylistic/indent': [ 'error', 4 ],
             '@stylistic/array-bracket-spacing': [ 'error', 'always', { singleValue: false } ],
-            '@stylistic/max-len': [ 'error', { code: 200, tabWidth: 4 } ],
         },
     })

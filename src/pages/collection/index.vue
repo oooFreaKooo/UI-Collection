@@ -55,6 +55,12 @@
 <script lang="ts" setup>
 const collections = ref([
     {
+        title: 'Pages',
+        subtitle: 'A collection of full pages for your UI Collection',
+        cssLink: 'pages',
+        vuetifyLink: 'v-pages',
+    },
+    {
         title: 'Cards',
         subtitle: 'A variety of cards for your UI Collection',
         cssLink: 'cards',
