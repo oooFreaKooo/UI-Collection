@@ -5867,6 +5867,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"highlight.js@npm:^11.10.0, highlight.js@npm:^11.9.0":
+  version: 11.10.0
+  resolution: "highlight.js@npm:11.10.0"
+  checksum: 10c0/cd8bf7ef06cbd72ddb83580ecabe769f08f062be8bb82d2eb492d31c17f7480d1f8d14a66fc81deee0601645435f19f04c470510563f847242a41ccff0ab873e
+  languageName: node
+  linkType: hard
+
 "hookable@npm:^5.5.3":
   version: 5.5.3
   resolution: "hookable@npm:5.5.3"
@@ -7429,6 +7436,7 @@ __metadata:
     "@vueuse/nuxt": "npm:^11.0.3"
     eslint: "npm:^9.10.0"
     gsap: "npm:^3.12.5"
+    highlight.js: "npm:^11.10.0"
     nuxt: "npm:^3.13.1"
     nuxt-particles: "npm:^0.3.0"
     postcss: "npm:^8.4.45"
@@ -7438,6 +7446,7 @@ __metadata:
     three: "npm:^0.168.0"
     typescript: "npm:~5.5"
     vite-svg-loader: "npm:^5.1.0"
+    vue-code-highlighter: "npm:^1.1.2"
     vue-tsc: "npm:^2.1.6"
     vuetify-nuxt-module: "npm:^0.18.2"
   languageName: unknown
@@ -10354,6 +10363,18 @@ __metadata:
   dependencies:
     ufo: "npm:^1.5.3"
   checksum: 10c0/a3c4b73b4ac0e919632543b6daad6067c2aed03a5805f72730f0c1a52a40f80d122dfa33383c1c466f69df77b5565b52704409efb42e4244243a241ab0392bef
+  languageName: node
+  linkType: hard
+
+"vue-code-highlighter@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "vue-code-highlighter@npm:1.1.2"
+  dependencies:
+    highlight.js: "npm:^11.9.0"
+  peerDependencies:
+    highlight.js: ^10.0.0
+    vue: ^3.0.0
+  checksum: 10c0/74cb1ec59684b767a473773713a17183b662a1b215464ab717b43a012f72c79a7dfec7b3e81959b88ffa890fca10eaa78c55234e455dae3057bb35015725f474
   languageName: node
   linkType: hard
 
