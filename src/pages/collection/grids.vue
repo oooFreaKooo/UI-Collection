@@ -27,6 +27,8 @@
                         v-model:show-dialog="showCodeDialog"
                         :title="`${selectedComponent} Code`"
                         :component="selectedComponent"
+                        collection="Grids"
+                        type="CSS"
                     />
                 </v-col>
             </v-row>

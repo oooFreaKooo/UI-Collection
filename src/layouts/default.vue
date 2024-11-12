@@ -5,15 +5,35 @@
                 color="primary"
                 prominent
             >
+                <!-- Navigation drawer toggle button for small screens -->
                 <v-app-bar-nav-icon
-                    variant="text"
+                    v-if="$vuetify.display.smAndDown"
                     @click.stop="drawer = !drawer"
                 />
 
-                <v-toolbar-title>UI Collection</v-toolbar-title>
+                <!-- Title with link -->
+                <NuxtLink
+                    to="/"
+                    style="text-decoration: none; color: inherit;"
+                    class="mx-8"
+                >
+                    <v-toolbar-title>UI Collection</v-toolbar-title>
+                </NuxtLink>
+                <template v-if="$vuetify.display.mdAndUp">
+                    <NuxtLink
+                        v-for="(item, index) in menuItems"
+                        :key="index"
+                        :to="item.href"
+                        style="text-decoration: none; color: inherit;"
+                        class="mx-4"
+                    >
+                        {{ item.title }}
+                    </NuxtLink>
+                </template>
 
                 <v-spacer />
 
+                <!-- Theme toggle and search button only shown on medium and larger screens -->
                 <template v-if="$vuetify.display.mdAndUp">
                     <ThemeToggle />
                     <v-btn
@@ -21,21 +41,55 @@
                         icon="mdi-magnify"
                     />
                 </template>
+
+                <!-- User menu -->
                 <div class="me-4">
                     <UserMenu :user-menu-items="userMenuItems" />
                 </div>
             </v-app-bar>
 
+            <!-- Navigation drawer for small screens -->
             <v-navigation-drawer
                 v-model="drawer"
-                :location="$vuetify.display.mobile ? 'top' : undefined"
-                temporary
+                :temporary="true"
+                location="start"
+                class="sm-drawer"
             >
-                <v-list
-                    :items="menuItems"
-                />
+                <v-list>
+                    <!-- Theme toggle and search button at the top inside the drawer -->
+                    <div class="drawer-header mt-4">
+                        <ThemeToggle />
+                        <v-btn
+                            class="mx-2"
+                            icon="mdi-magnify"
+                        />
+                    </div>
+                    <v-divider />
+
+                    <!-- Menu items -->
+                    <v-list-item
+                        v-for="(item, index) in menuItems"
+                        :key="index"
+                        link
+                        class="mb-2"
+                    >
+                        <NuxtLink
+                            :to="item.href"
+                            style="text-decoration: none; color: inherit;"
+                        >
+                            <v-icon
+                                :color="item.color"
+                                class="mx-2"
+                            >
+                                {{ item.icon }}
+                            </v-icon>
+                            {{ item.title }}
+                        </NuxtLink>
+                    </v-list-item>
+                </v-list>
             </v-navigation-drawer>
 
+            <!-- Main content -->
             <v-main style="height: 100vh;">
                 <slot />
             </v-main>
@@ -46,11 +100,11 @@
 <script lang="ts" setup>
 const drawer = ref<boolean>(false)
 
-const menuItems = ref<Array<{ title: string, icon: string, href?: string }>>([
-    { title: 'Collection', icon: 'mdi-view-dashboard', href: 'collection' },
-    { title: 'Analytics', icon: 'mdi-chart-bar' },
-    { title: 'Projects', icon: 'mdi-folder-multiple' },
-    { title: 'Team', icon: 'mdi-account-group' },
+const menuItems = ref<Array<{ title: string, icon: string, href?: string, color?: string }>>([
+    { title: 'Collection', icon: 'mdi-view-dashboard', href: 'collection', color: 'primary' },
+    { title: 'Analytics', icon: 'mdi-chart-bar', color: 'secondary' },
+    { title: 'Projects', icon: 'mdi-folder-multiple', color: 'blue' },
+    { title: 'Team', icon: 'mdi-account-group', color: 'red' },
 ])
 
 const userMenuItems = ref<Array<{ title: string, icon: string, color: string }>>([

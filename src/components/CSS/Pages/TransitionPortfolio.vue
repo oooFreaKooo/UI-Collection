@@ -377,17 +377,18 @@ a{
 }
 
 header{
-    width: 100%;
-    position: fixed;
+    top: 0;
+    left: 25%;
     z-index: 100;
-    text-align: center;
-    padding-top: 10px;
+    width: 100%;
+    position: absolute;
 }
 
 header nav a{
     margin: 0 30px;
     color: var(--color);
-    font-size: small;
+    font-family: 'Righteous';
+    font-size: medium;
 }
 
 .tab{

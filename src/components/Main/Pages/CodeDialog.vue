@@ -45,13 +45,15 @@ import 'vue-code-highlighter/dist/style.css'
 const props = defineProps({
     title: { type: String, required: true },
     component: { type: String, required: true },
+    collection: { type: String, required: true },
+    type: { type: String, required: true },
     showDialog: { type: Boolean, required: true },
 })
 const dialog = ref(false)
 const code = ref('')
 
 async function getCode () {
-    const response = await import(`~/components/CSS/Grids/${props.component}.vue?raw`)
+    const response = await import(`~/components/${props.type}/${props.collection}/${props.component}.vue?raw`)
     code.value = response.default
 }
 </script>
