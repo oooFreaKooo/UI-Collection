@@ -15,14 +15,7 @@
                 <v-spacer />
 
                 <template v-if="$vuetify.display.mdAndUp">
-                    <v-btn
-                        icon
-                        class="mx-4"
-                        @click="toggleTheme"
-                    >
-                        <v-icon>{{ isDark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
-                    </v-btn>
-
+                    <ThemeToggle />
                     <v-btn
                         class="mx-4"
                         icon="mdi-magnify"
@@ -51,11 +44,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTheme } from 'vuetify'
-
-const theme = useTheme()
 const drawer = ref<boolean>(false)
-const isDark = ref<boolean>(false)
 
 const menuItems = ref<Array<{ title: string, icon: string, href?: string }>>([
     { title: 'Collection', icon: 'mdi-view-dashboard', href: 'collection' },
@@ -70,10 +59,6 @@ const userMenuItems = ref<Array<{ title: string, icon: string, color: string }>>
     { title: 'Messages', icon: 'mdi-email', color: 'blue' },
     { title: 'Logout', icon: 'mdi-logout', color: 'red' },
 ])
-
-function toggleTheme () {
-    theme.global.name.value = theme.global.name.value === 'light' ? 'dark' : 'light'
-}
 </script>
 
 <style scoped lang="scss">
