@@ -90,16 +90,16 @@
             <div class="container">
                 <div class="list">
                     <div
-                        v-for="skill in skills"
-                        :key="skill.name"
+                        v-for="sk in skills"
+                        :key="sk.name"
                         class="item"
                     >
-                        <i :class="skill.icon" />
+                        <i :class="sk.icon" />
                         <div class="name">
-                            {{ skill.name }}
+                            {{ sk.name }}
                         </div>
                         <div class="des">
-                            {{ skill.description }}
+                            {{ sk.description }}
                         </div>
                     </div>
                 </div>
@@ -115,29 +115,29 @@
             <div class="container">
                 <div class="list">
                     <div
-                        v-for="(project, index) in projects"
-                        :key="project.id"
+                        v-for="(proj, index) in projects"
+                        :key="index"
                         class="item"
                     >
                         <img
-                            :src="project.image"
-                            :alt="project.name"
+                            :src="'https://picsum.photos/300?random=' + index"
+                            :alt="proj.name"
                         >
                         <div class="index">
                             #{{ index + 1 }}
                         </div>
                         <div class="name">
-                            {{ project.name }}
+                            {{ proj.name }}
                         </div>
                         <div class="des">
-                            {{ project.description }}
+                            {{ proj.description }}
                         </div>
                         <div class="author">
                             <div class="job">
-                                {{ project.role }}
+                                {{ proj.role }}
                             </div>
                             <div class="time">
-                                {{ project.date }}
+                                {{ proj.date }}
                                 <i class="fa-regular fa-clock" />
                             </div>
                         </div>
@@ -315,8 +315,6 @@ const skills = [
 // Projects data
 const projects = [
     {
-        id: 1,
-        image: '/images/project1.jpg',
         name: 'Name Project',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, sint? Amet minus similique officiis enim impedit unde cumque id corrupti!',
@@ -324,8 +322,6 @@ const projects = [
         date: '2022/10/10',
     },
     {
-        id: 2,
-        image: '/images/project2.jpg',
         name: 'Name Project',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, sint? Amet minus similique officiis enim impedit unde cumque id corrupti!',
@@ -333,8 +329,6 @@ const projects = [
         date: '2022/10/10',
     },
     {
-        id: 3,
-        image: '/images/project3.jpg',
         name: 'Name Project',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, sint? Amet minus similique officiis enim impedit unde cumque id corrupti!',
@@ -342,8 +336,6 @@ const projects = [
         date: '2022/10/10',
     },
     {
-        id: 4,
-        image: '/images/project4.jpg',
         name: 'Name Project',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, sint? Amet minus similique officiis enim impedit unde cumque id corrupti!',
@@ -351,8 +343,6 @@ const projects = [
         date: '2022/10/10',
     },
     {
-        id: 5,
-        image: '/images/project5.jpg',
         name: 'Name Project',
         description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, sint? Amet minus similique officiis enim impedit unde cumque id corrupti!',
@@ -366,6 +356,7 @@ const projects = [
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap');
+
 .main-body {
     height: 100vh;
     background-color: #23282E;
@@ -380,9 +371,11 @@ a{
     cursor: pointer;
     font-weight: bold;
 }
+
 ::-webkit-scrollbar{
     width: 0;
 }
+
 header{
     width: 100%;
     position: fixed;
@@ -390,6 +383,7 @@ header{
     text-align: center;
     padding-top: 10px;
 }
+
 header nav a{
     margin: 0 30px;
     color: var(--color);
@@ -404,6 +398,7 @@ header nav a{
     background-image: url(/images/bg.png);
     background-size: 50%;
 }
+
 .tab .container{
     width: 1140px;
     max-width: 100%;
@@ -413,17 +408,21 @@ header nav a{
     margin: auto;
     position: relative;
 }
+
 #intro{
     background-color: #16222D;
 }
+
 #intro .avatar{
     text-align: right;
     height: 100%;
 }
+
 #intro .avatar img{
     height: 100%;
     filter: saturate(0.5);
 }
+
 #intro .content{
     position: absolute;
     top: 50%;
@@ -432,6 +431,7 @@ header nav a{
     width: 500px;
     max-width: 80%;
 }
+
 #intro .content .name,
 #intro .content .job{
     font-size: 6em;
@@ -439,6 +439,7 @@ header nav a{
     font-family: 'Righteous', sans-serif;
     line-height: 1em;
 }
+
 .text-gradient{
     background-image: linear-gradient(
         to right, #E4454A, #CA3EA7
@@ -448,6 +449,7 @@ header nav a{
     -webkit-background-clip: text;
     background-clip: text;
 }
+
 #intro .content .des{
     margin-top: 1.2em;
     width: 70%;
@@ -455,6 +457,7 @@ header nav a{
 #intro .content .des a{
     margin-top: 1.2em;
 }
+
 #intro .content i{
     font-size: 5em;
     position: absolute;
@@ -472,6 +475,7 @@ header nav a{
     );
     background-size: cover;
 }
+
 #skill .list{
     height: 100%;
     display: grid;
@@ -489,9 +493,11 @@ header nav a{
     text-align: center;
     padding: 20px;
 }
+
 #skill .list .item:nth-child(odd){
     background-color: #3F2525;
 }
+
 #skill .list .item i{
     width: 50px;
     height: 50px;
@@ -504,10 +510,12 @@ header nav a{
     border-radius: 5px;
     box-shadow: 0 10px 10px #0005;
 }
+
 #skill .list .item .name{
     font-size: 1.5em;
     margin-top: 0.7em;
 }
+
 #skill .list .item .des{
     font-size: small;
     opacity: 0.8;
@@ -518,23 +526,27 @@ header nav a{
     background-color: #cfbaba;
     color: #444B57;
 }
+
 #project .list{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     padding: 50px;
 }
+
 #project .list .item img{
     width: 100%;
     height: 150px;
     object-fit: cover;
 }
+
 #project .list .item{
     border-radius: 30px;
     overflow: hidden;
     background-color: #fff;
     position: relative;
 }
+
 #project .list .item .index{
     background-color: #fff;
     font-weight: bold;
@@ -545,26 +557,32 @@ header nav a{
     font-style: italic;
     border-top-right-radius: 20px;
 }
+
 #project .list .item .name{
     font-weight: bold;
     font-size: large;
     padding: 10px;
 }
+
 #project .list .item .des{
     padding: 0 10px 10px 10px;
 }
+
 #project .list .item .author{
     padding: 10px;
     border-top: 1px solid #eee;
     display: flex;
     justify-content: space-between;
 }
+
 #project .list .item .job{
     font-weight: bold;
 }
+
 #project .container{
     overflow: auto;
 }
+
 /* experience */
 #experience{
     background-image: linear-gradient(
@@ -572,6 +590,7 @@ header nav a{
     );
     background-size: cover;
 }
+
 #experience .list{
     height: 100%;
     width: max-content;
@@ -582,6 +601,7 @@ header nav a{
     position: relative;
     z-index: 1;
 }
+
 #experience .list .item{
     display: grid;
     grid-template-rows: 1fr 50px 1fr;
@@ -589,6 +609,7 @@ header nav a{
     width: 200px;
     flex-shrink: 0;
 }
+
 #experience .list .item i{
     background-color: #444B57;
     width: 50px;
@@ -599,21 +620,26 @@ header nav a{
     align-items: center;
     border-radius: 50%;
 }
+
 #experience .list .item .time{
     display: flex;
     align-items: end;
     font-size: large;
 }
+
 #experience .list .item .content .job{
     font-size: large;
 }
+
 #experience .list .item .content .company{
     color: #E4454A;
 }
+
 #experience .list .item .content .des{
     font-size: 0.8em;
     opacity: 0.7;
 }
+
 #experience .list .item:nth-child(odd) .content{
     grid-row-start: 1;
     grid-row-end: 2;
@@ -621,11 +647,13 @@ header nav a{
     flex-direction: column;
     justify-content: end;
 }
+
 #experience .list .item:nth-child(odd) .time{
     grid-row-start: 3;
     grid-row-end: 4;
     align-items: start;
 }
+
 #experience .list::before{
     position: absolute;
     top: 50%;
@@ -635,6 +663,7 @@ header nav a{
     content: '';
     z-index: -1;
 }
+
 #experience .container{
     overflow: auto;
     padding: 50px;
@@ -643,6 +672,7 @@ header nav a{
 #contact{
     background: #242330;
 }
+
 #contact .content{
     height: 100%;
     display: flex;
@@ -650,19 +680,23 @@ header nav a{
     align-items: center;
     justify-content: center;
 }
+
 #contact .thank{
     font-size: 5em;
     font-weight: bold;
     display: block;
 }
+
 #contact .des{
     width: 500px;
     max-width: 80%;
     text-align: center;
 }
+
 #contact .list{
     text-align: center;
 }
+
 #contact .list .item{
     display: inline-block;
     margin: 10px 30px;
@@ -675,47 +709,59 @@ header nav a{
     }
 
 }
+
 @media screen and (max-width: 767px){
+
     .main-body{
         font-size: 10px;
     }
+
     header nav a{
         margin: 10px;
     }
+
     #intro .avatar img{
         transform: none;
     }
+
     #intro .content{
         left: 20px;
     }
+
     #intro .content .name{
         font-size: 4em;
     }
+
     #intro .content i{
         position: unset;
     }
+
     #skill .list{
         padding: 0px;
         grid-template-columns: repeat(2, 1fr);
     }
+
     #skill .list .item:nth-child(odd){
         background: unset;
     }
+
     #skill .list .item:nth-child(2),
     #skill .list .item:nth-child(3n){
         background: #3F2525;
     }
+
     #project .list{
         padding: 10px;
         grid-template-columns: repeat(2, 1fr);
         gap: 5px;
     }
+
     #project .list .item img{
         height: 100px;
     }
 }
 
-/* effect */
+/* Transition Animation */
 .tab{
     position: fixed;
     inset: 0 0 0 0;
