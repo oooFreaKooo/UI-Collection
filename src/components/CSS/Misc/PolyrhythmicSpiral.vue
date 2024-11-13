@@ -1,36 +1,32 @@
 <template>
-    <div class="main-container">
-        <div id="control-bar-wrapper">
-            <div id="control-bar">
-                <button
-                    id="sound-toggle"
-                    class="toggle"
-                    type="button"
-                    :data-toggled="soundEnabled.toString()"
-                    title="Toggle Pulse"
-                    @click="handleSoundToggle()"
-                >
-                    <i class="mdi mdi-volume-off off" />
-                    <i class="mdi mdi-volume-high on" />
-                </button>
-            </div>
+    <div id="control-bar-wrapper">
+        <div id="control-bar">
+            <button
+                id="sound-toggle"
+                class="toggle"
+                type="button"
+                :data-toggled="soundEnabled.toString()"
+                title="Toggle Pulse"
+                @click="handleSoundToggle()"
+            >
+                <i class="mdi mdi-volume-off off" />
+                <i class="mdi mdi-volume-high on" />
+            </button>
         </div>
-
-        <div id="background-image" />
-
-        <div id="background-filter" />
-
-        <canvas
-            id="paper"
-            ref="paperRef"
-            @click="handleSoundToggle()"
-        />
     </div>
+
+    <div id="background-image" />
+
+    <div id="background-filter" />
+
+    <canvas
+        id="paper"
+        ref="paperRef"
+        @click="handleSoundToggle()"
+    />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-
 interface Arc {
     color: string
     velocity: number
@@ -310,10 +306,6 @@ function draw () {
 </script>
 
 <style scoped>
-.main-container {
-  height: 100%;
-}
-
 canvas {
   width: 100%;
   height: 100vh;

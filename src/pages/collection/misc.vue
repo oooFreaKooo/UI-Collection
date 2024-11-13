@@ -17,6 +17,7 @@
             <component
                 :is="selectedComponentInstance"
                 v-if="selectedComponentInstance"
+                class="h-100 mx-auto my-14"
             />
         </v-container>
     </div>
@@ -27,7 +28,7 @@ const pageFolder = 'Misc'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = ['PolyrhythmicSpiral']
+const componentOptions = [ 'PolyrhythmicSpiral', 'LayerLogoAnimation' ]
 
 // Watch for component selection changes
 watch(
@@ -49,5 +50,7 @@ watch(
 </script>
 
 <style scoped>
-
+.h-100 {
+  min-height: 100vh;
+}
 </style>
