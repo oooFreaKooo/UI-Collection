@@ -39,7 +39,7 @@ watch(
         if (newValue) {
             try {
                 const component = await import(`~/components/CSS/${pageFolder}/${newValue}.vue`)
-                selectedComponentInstance.value = component.default
+                selectedComponentInstance.value = markRaw(component.default)
             } catch {
                 selectedComponentInstance.value = null
             }

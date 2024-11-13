@@ -28,7 +28,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    'FuturisticCard', 'EvervaultHover', 'TrippyCardBgChange',
+    'FuturisticCard', 'EvervaultHover', 'TrippyCardBgChange', 'SwipeHoverCards',
 ]
 
 // Watch for component selection changes
@@ -38,8 +38,9 @@ watch(
         if (newValue) {
             try {
                 const component = await import(`~/components/CSS/${pageFolder}/${newValue}.vue`)
-                selectedComponentInstance.value = component.default
-            } catch {
+                selectedComponentInstance.value = markRaw(component.default)
+            } catch (error) {
+                console.error(`Error loading component ${newValue}:`, error)
                 selectedComponentInstance.value = null
             }
         } else {

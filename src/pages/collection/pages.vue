@@ -29,7 +29,7 @@ const pageFolder = 'Pages'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = ['TransitionPortfolio']
+const componentOptions = [ 'AppMenuLockScreen', 'TransitionPortfolio' ]
 
 // Watch for component selection changes
 watch(
@@ -38,7 +38,7 @@ watch(
         if (newValue) {
             try {
                 const component = await import(`~/components/CSS/${pageFolder}/${newValue}.vue`)
-                selectedComponentInstance.value = component.default
+                selectedComponentInstance.value = markRaw(component.default)
             } catch {
                 selectedComponentInstance.value = null
             }
