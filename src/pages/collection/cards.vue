@@ -27,7 +27,7 @@ const pageFolder = 'Cards'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = [ 'FuturisticCard', 'DottedCard' ]
+const componentOptions = [ 'FuturisticCard', 'EvervaultHover' ]
 
 // Watch for component selection changes
 watch(

@@ -49,7 +49,6 @@ export default createConfigForNuxt({
     .override('nuxt/vue/rules', {
         rules: {
             'vue/html-indent': [ 'error', 4 ],
-            'vue/script-indent': [ 'error', 4, { baseIndent: 0 } ],
             'vue/multi-word-component-names': 'off',
         },
     })
