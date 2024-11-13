@@ -1,246 +1,264 @@
 <template>
-    <div
-        id="cards"
-        class="body"
-    >
-        <div
-            v-for="(card, index) in cards"
-            :key="index"
-            class="card"
-            :data-color="card.color"
-            @mouseenter="setBackgroundColor(card.color)"
-            @mouseleave="resetBackgroundColor"
-        >
-            <img
-                class="card-front-image card-image"
-                :src="card.frontImage"
-                alt="Card Front"
-            >
-            <div class="card-faders">
-                <img
-                    v-for="(image, idx) in card.faderImages"
-                    :key="idx"
-                    class="card-fader card-image"
-                    :src="image"
-                    alt="Card Fader"
+    <div class="body">
+        <div class="card-track">
+            <div class="card-wrapper">
+                <div
+                    ref="cardRef"
+                    class="card"
+                    @mousemove="handleOnMove"
+                    @touchmove="handleOnTouchMove"
                 >
+                    <div class="card-image">
+                        <img src="https://assets.codepen.io/1468070/Hyperplexed+Logo+-+Color+5.svg">
+                    </div>
+                    <div class="card-gradient" />
+                    <div
+                        ref="lettersRef"
+                        class="card-letters"
+                    />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-interface Card {
-    color: string
-    frontImage: string
-    faderImages: string[]
+const chars =
+  'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+const lettersRef = ref<HTMLElement | null>(null)
+const cardRef = ref<HTMLElement | null>(null)
+
+const randomChar = () =>
+    chars[Math.floor(Math.random() * chars.length)]
+
+const randomString = (length: number) =>
+    Array.from({ length }, randomChar).join('')
+
+function handleOnMove (e: MouseEvent) {
+    if (!cardRef.value || !lettersRef.value) { return }
+
+    const rect = cardRef.value.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+
+    lettersRef.value.style.setProperty('--x', `${x}px`)
+    lettersRef.value.style.setProperty('--y', `${y}px`)
+
+    lettersRef.value.textContent = randomString(1500)
 }
 
-const cards = ref<Card[]>([
-    {
-        color: 'blue',
-        frontImage:
-            'https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80',
-        faderImages: Array(8).fill(
-            'https://assets.codepen.io/1468070/game+cover+-+fall+guys.png?format=auto&quality=80',
-        ),
-    },
-    {
-        color: 'green',
-        frontImage:
-            'https://assets.codepen.io/1468070/game+cover+-+minecraft.png?format=auto&quality=80',
-        faderImages: Array(8).fill(
-            'https://assets.codepen.io/1468070/game+cover+-+minecraft.png?format=auto&quality=80',
-        ),
-    },
-    {
-        color: 'brown',
-        frontImage:
-            'https://assets.codepen.io/1468070/game+cover+-+tetris.png?format=auto&quality=80',
-        faderImages: Array(8).fill(
-            'https://assets.codepen.io/1468070/game+cover+-+tetris.png?format=auto&quality=80',
-        ),
-    },
-])
-
-const backgroundColor = ref('black')
-
-function setBackgroundColor (color: string) {
-    switch (color) {
-        case 'blue':
-            backgroundColor.value = 'rgba(92, 192, 249, 0.25)'
-            break
-        case 'green':
-            backgroundColor.value = 'rgba(125, 161, 35, 0.25)'
-            break
-        case 'brown':
-            backgroundColor.value = 'rgba(127, 46, 23, 0.25)'
-            break
-        default:
-            backgroundColor.value = 'black'
+function handleOnTouchMove (e: TouchEvent) {
+    if (e.touches.length > 0) {
+        handleOnMove(e.touches[0] as any)
     }
 }
-
-function resetBackgroundColor () {
-    backgroundColor.value = 'black'
-}
-
-onMounted(() => {
-    document.getElementById('cards')!.style.backgroundColor = backgroundColor.value
-})
-
-watch(backgroundColor, (newColor) => {
-    document.getElementById('cards')!.style.backgroundColor = newColor
-})
 </script>
 
 <style scoped>
-* {
-  --blue-rgb: 92 192 249;
-  --green-rgb: 125 161 35;
-  --brown-rgb: 127 46 23;
-}
-
 .body {
-    background-color: black;
-}
-
-.body {
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 1000ms;
-}
-
-#cards {
-  width: 100%;
+  background: rgb(var(--background-rgb));
+  height: 100vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+* {
+  --background-rgb: 2, 6, 23;
+  --background-light-rgb: 30, 41, 59;
+
+  --border-rgb: 255, 255, 255;
+  --border: 1px solid rgba(var(--border-rgb), 0.2);
+
+  --hyperplexed-main-rgb: 41, 121, 255;
+  --hyperplexed-main-light-rgb: 56, 182, 255;
+  --hyperplexed-secondary-rgb: 42, 252, 152;
+
+  --card-size: 480px;
+  --font-size: 0.8rem;
+  --logo-size: calc(var(--card-size) * 0.3);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card-track {
+  height: 100%;
+  width: var(--card-size);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.card-wrapper {
+  width: 100%;
+  position: relative;
 }
 
 .card {
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
   position: relative;
+  margin: 1rem;
+  border-radius: 2rem;
+  overflow: hidden;
   cursor: pointer;
-  outline: none;
-  transition: transform 100ms;
 }
 
-.card .card-front-image {
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 
-.card .card-image {
-  width: clamp(300px, 10vw, 500px);
-  aspect-ratio: 2 / 3;
-  border-radius: clamp(0.5rem, 0.75vw, 2rem);
+.card-image > img {
+  width: var(--logo-size);
 }
 
-.card-faders {
+.card-gradient {
   height: 100%;
   width: 100%;
   position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 1500ms;
+  background: radial-gradient(
+    rgb(var(--background-light-rgb)) 40%,
+    rgb(var(--hyperplexed-main-rgb)) 50%,
+    rgb(var(--hyperplexed-main-light-rgb)),
+    rgb(var(--hyperplexed-secondary-rgb))
+  );
+  mix-blend-mode: darken;
   pointer-events: none;
+  z-index: 3;
 }
 
-.card:hover .card-faders {
+.card-letters {
+  --x: 0px;
+  --y: 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: var(--font-size);
+  font-weight: 500;
+  word-wrap: break-word;
+  opacity: 0;
+  transition: opacity 400ms;
+  mask-image: radial-gradient(
+    calc(var(--card-size) * 0.8) circle at var(--x) var(--y),
+    rgb(255, 255, 255) 20%,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: scale(1.03);
+}
+
+.card:hover .card-letters {
   opacity: 1;
 }
 
-.card:active {
-  transform: scale(0.98);
-}
-
-.card-fader {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-}
-
-.card-fader:nth-child(odd) {
-  animation: fade-left 3s linear infinite;
-}
-
-.card-fader:nth-child(even) {
-  animation: fade-right 3s linear infinite;
-}
-
-.card-fader:is(:nth-child(3), :nth-child(4)) {
-  animation-delay: 750ms;
-}
-
-.card-fader:is(:nth-child(5), :nth-child(6)) {
-  animation-delay: 1500ms;
-}
-
-.card-fader:is(:nth-child(7), :nth-child(8)) {
-  animation-delay: 2250ms;
-}
-
-@media (max-width: 1200px) {
-  body {
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  #cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 4rem;
-    padding: 4rem;
-  }
-
-  .card .card-image {
-    width: 400px;
-  }
-}
-
 @media (max-width: 600px) {
-  #cards {
-    gap: 2rem;
-    padding: 2rem;
+  :root {
+    --card-size: 340px;
   }
 
   .card {
-    width: 80%;
-  }
-
-  .card .card-image {
-    width: 100%;
+    border-radius: 1rem;
   }
 }
 
-@keyframes fade-left {
-  from {
-    transform: scale(1) translateX(0%);
-    opacity: 1;
-  }
+/* -- Extra Styles -- */
 
-  to {
-    transform: scale(0.8) translateX(-30%);
-    opacity: 0;
-  }
+.card-track::before,
+.card-track::after {
+  content: '';
+  height: 100vh;
+  width: 1px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-@keyframes fade-right {
-  from {
-    transform: scale(1) translateX(0%);
-    opacity: 1;
-  }
+.card-track::before {
+  left: -1px;
+  border-left: var(--border);
+}
 
-  to {
-    transform: scale(0.8) translateX(30%);
-    opacity: 0;
-  }
+.card-track::after {
+  right: -1px;
+  border-right: var(--border);
+}
+
+.card-wrapper::before,
+.card-wrapper::after {
+  content: '';
+  width: 100vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card-wrapper::before {
+  top: -1px;
+  border-top: var(--border);
+}
+
+.card-wrapper::after {
+  bottom: -1px;
+  border-bottom: var(--border);
+}
+
+.card-corners {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.card-corners > .card-corner {
+  display: block;
+  height: 9px;
+  width: 1px;
+  position: absolute;
+  background-color: white;
+}
+
+.card-corners > .card-corner::after {
+  content: '';
+  width: 9px;
+  height: 1px;
+  position: absolute;
+  left: -4px;
+  top: 4px;
+  background-color: white;
+}
+
+.card-corners > .card-corner:nth-child(1) {
+  left: -1px;
+  top: -5px;
+}
+
+.card-corners > .card-corner:nth-child(2) {
+  right: -1px;
+  top: -5px;
+}
+
+.card-corners > .card-corner:nth-child(3) {
+  right: -1px;
+  bottom: -5px;
+}
+
+.card-corners > .card-corner:nth-child(4) {
+  left: -1px;
+  bottom: -5px;
 }
 </style>
