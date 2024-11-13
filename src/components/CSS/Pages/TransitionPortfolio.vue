@@ -358,12 +358,9 @@ const projects = [
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&display=swap');
 
 .main-body {
+    position: relative;
     height: 100vh;
-    background-color: #23282E;
     font-family: 'Poppins';
-    margin: 0;
-    font-size: 16px;
-    color: white;
 }
 
 a{
@@ -377,11 +374,10 @@ a{
 }
 
 header{
-    top: 0;
-    left: 25%;
     z-index: 100;
     width: 100%;
-    position: absolute;
+    position: fixed;
+    top: 300px;
 }
 
 header nav a{
@@ -392,8 +388,6 @@ header nav a{
 }
 
 .tab{
-    width: 100%;
-    height: 100vh;
     overflow: hidden;
     position: relative;
     background-image: url(/images/bg.png);
@@ -411,6 +405,7 @@ header nav a{
 }
 
 #intro{
+    margin-top: 250px;
     background-color: #16222D;
 }
 
@@ -469,6 +464,7 @@ header nav a{
 
 /* skills */
 #skill{
+    margin-top: 250px;
     background-color: #F2F0EB;
     color: #eee;
     background-image: linear-gradient(
@@ -524,6 +520,7 @@ header nav a{
 
 /* project */
 #project{
+    margin-top: 250px;
     background-color: #cfbaba;
     color: #444B57;
 }
@@ -586,6 +583,7 @@ header nav a{
 
 /* experience */
 #experience{
+    margin-top: 250px;
     background-image: linear-gradient(
         45deg, #212632, #242A34, #3C4C5A
     );
@@ -671,6 +669,7 @@ header nav a{
 }
 
 #contact{
+    margin-top: 250px;
     background: #242330;
 }
 

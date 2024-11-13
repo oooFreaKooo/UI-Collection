@@ -1,4 +1,3 @@
-<!-- SVGStrokeAnimation.vue -->
 <template>
     <div>
         <SVGIcon

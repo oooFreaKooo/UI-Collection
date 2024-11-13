@@ -22,7 +22,7 @@ const mouseDownAt = ref(0)
 const prevPercentage = ref(0)
 const percentage = ref(0)
 
-const transformStyle = computed(() => `translate(${percentage.value}%, -50%)`)
+const transformStyle = computed(() => `translate(${percentage.value}% , 0)`)
 const objectPosition = computed(() => `${100 + percentage.value}% center`)
 
 const handleOnDown = (event: MouseEvent | TouchEvent) => {
@@ -57,16 +57,14 @@ useEventListener(window, 'touchmove', handleOnMove)
 #image-track {
   display: flex;
   gap: 2vmin;
-  position: absolute;
-  top: 50%;
   user-select: none;
-  transition: transform 1.0s ease-out;
+  transition: transform 1.0s ease;
 }
 
 #image-track > .image {
   width: 30vmin;
   height: 46vmin;
   object-fit: cover;
-  transition: object-position 1.0s ease-out;
+  transition: object-position 1.0s ease;
 }
 </style>
