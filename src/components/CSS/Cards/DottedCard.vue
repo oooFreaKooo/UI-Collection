@@ -14,19 +14,11 @@
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&family=Space+Mono&display=swap');
+
 * {
   --primary-color: mediumslateblue;
-  box-sizing: border-box;
-  display: grid;
-  place-items: center;
-  background-color: black;
-  margin: 0rem;
-  overflow: hidden;
-  font-family: "Montserrat", sans-serif;
-}
-
-h1, h2, h3, p {
-  margin: 0rem;
+  font-family: 'Space Mono', monospace;
 }
 
 .card {

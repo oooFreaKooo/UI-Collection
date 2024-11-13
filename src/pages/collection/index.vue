@@ -90,6 +90,12 @@ const collections = ref([
         cssLink: 'cursor',
         vuetifyLink: 'v-cursor',
     },
+    {
+        title: 'Misc',
+        subtitle: 'CSS-only and Vuetify misc elements',
+        cssLink: 'misc',
+        vuetifyLink: 'v-misc',
+    },
 ])
 </script>
 
