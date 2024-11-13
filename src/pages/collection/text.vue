@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="banner">
         <v-container>
             <!-- Use the Selector component -->
             <Selector
@@ -19,6 +19,7 @@
             <component
                 :is="selectedComponentInstance"
                 v-if="selectedComponentInstance"
+                class="dynamic-component"
             />
         </v-container>
     </div>
@@ -49,3 +50,62 @@ watch(
     { immediate: true },
 )
 </script>
+
+<style scoped>
+.banner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner .dynamic-component {
+    display: flex;
+    align-items: center;
+    height: 70%;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/valentin-petrov-m-mal-01.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: bgZoomIn 4s ease-in-out 1 forwards;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/after.png');
+    background-size: cover;
+    background-position: top;
+    transform: scale(2);
+    animation: bgZoomOut 4s ease-in-out 1 forwards;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes bgZoomIn {
+from {
+  transform: scale(1.2);
+}
+to {
+  transform: scale(1);
+}
+}
+
+@keyframes bgZoomOut {
+from {
+  transform: scale(1);
+}
+to {
+  transform: scale(2);
+}
+}
+</style>

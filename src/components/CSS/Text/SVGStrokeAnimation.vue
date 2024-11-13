@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <SVGIcon
-            width="460"
-            height="460"
-            :class="iconClass"
-        />
-    </div>
+    <SVGIcon
+        width="100%"
+        height="500px"
+        :class="iconClass"
+    />
 </template>
 
 <script lang="ts" setup>
