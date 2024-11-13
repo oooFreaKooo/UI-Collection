@@ -1,37 +1,19 @@
 <template>
     <div class="content">
         <v-container>
-            <v-row>
-                <!-- Dropdown to select component -->
-                <v-col
-                    cols="12"
-                    md="4"
-                >
-                    <v-select
-                        v-model="selectedComponent"
-                        :items="componentOptions"
-                        label="Select Component"
-                        item-text="label"
-                        item-value="name"
-                        outlined
-                    />
-                </v-col>
+            <!-- Use the Selector component -->
+            <Selector
+                v-model="selectedComponent"
+                :component-options="componentOptions"
+            />
 
-                <!-- Button to show code -->
-                <v-col
-                    cols="12"
-                    md="2"
-                >
-                    <!-- CodeDialog component with dynamic control -->
-                    <CodeDialog
-                        v-model:show-dialog="showCodeDialog"
-                        :title="`${selectedComponent} Code`"
-                        :component="selectedComponent"
-                        :collection="pageFolder"
-                        type="CSS"
-                    />
-                </v-col>
-            </v-row>
+            <CodeDialog
+                v-model:show-dialog="showCodeDialog"
+                :title="`${selectedComponent} Code`"
+                :component="selectedComponent"
+                :collection="pageFolder"
+                type="CSS"
+            />
 
             <!-- Preview selected component -->
             <component
@@ -47,23 +29,23 @@ const pageFolder = 'Sliders'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = ref<string[]>([])
+const componentOptions = ['SlidingParallaxImg']
 
-// Dynamically import components on mount
-onMounted(() => {
-    componentOptions.value = ['SlidingParallaxImg']
-})
-
-watch(selectedComponent, async (newValue) => {
-    if (newValue) {
-        try {
-            const component = await import(`~/components/CSS/${pageFolder}/${newValue}.vue`)
-            selectedComponentInstance.value = component.default
-        } catch {
+// Watch for component selection changes
+watch(
+    selectedComponent,
+    async (newValue) => {
+        if (newValue) {
+            try {
+                const component = await import(`~/components/CSS/${pageFolder}/${newValue}.vue`)
+                selectedComponentInstance.value = component.default
+            } catch {
+                selectedComponentInstance.value = null
+            }
+        } else {
             selectedComponentInstance.value = null
         }
-    } else {
-        selectedComponentInstance.value = null
-    }
-})
+    },
+    { immediate: true },
+)
 </script>

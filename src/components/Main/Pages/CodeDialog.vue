@@ -1,41 +1,39 @@
 <template>
-    <div class="pa-4 text-center">
-        <v-dialog
-            v-model="dialog"
-            class="dialog-responsive"
+    <v-btn
+        text="Show Code"
+        variant="outlined"
+        prepend-icon="mdi-code-tags"
+        class="mb-4"
+        @click="show()"
+    />
+
+    <v-dialog
+        v-model="dialog"
+        class="dialog-responsive"
+    >
+        <v-card
+            variant="elevated"
+            ripple
         >
-            <template #activator="{ props: activatorProps }">
-                <v-btn
-                    v-bind="activatorProps"
-                    text="Show Code"
-                    @click="getCode"
+            <v-card-title class="d-flex justify-end">
+                <VIcon
+                    size="large"
+                    aria-label="Close"
+                    @click="dialog = false"
+                >
+                    mdi-close
+                </VIcon>
+            </v-card-title>
+
+            <v-card-text class="scrollable-content">
+                <VueCodeHighlighter
+                    :code="code"
+                    lang="ts"
+                    :title="title"
                 />
-            </template>
-
-            <v-card
-                variant="elevated"
-                rippple
-            >
-                <v-card-title class="d-flex justify-end">
-                    <VIcon
-                        size="large"
-                        aria-label="Close"
-                        @click="dialog = false"
-                    >
-                        mdi-close
-                    </VIcon>
-                </v-card-title>
-
-                <v-card-text class="scrollable-content">
-                    <VueCodeHighlighter
-                        :code="code"
-                        lang="ts"
-                        :title="title"
-                    />
-                </v-card-text>
-            </v-card>
-        </v-dialog>
-    </div>
+            </v-card-text>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script lang="ts" setup>
@@ -55,6 +53,11 @@ const code = ref('')
 async function getCode () {
     const response = await import(`~/components/${props.type}/${props.collection}/${props.component}.vue?raw`)
     code.value = response.default
+}
+
+async function show () {
+    await getCode()
+    dialog.value = true
 }
 </script>
 

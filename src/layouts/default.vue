@@ -3,7 +3,6 @@
         <v-layout>
             <v-app-bar
                 color="primary"
-                prominent
             >
                 <!-- Navigation drawer toggle button for small screens -->
                 <v-app-bar-nav-icon
@@ -23,7 +22,7 @@
                     <NuxtLink
                         v-for="(item, index) in menuItems"
                         :key="index"
-                        :to="item.href"
+                        :to="`/${(item.href || '').replace(/^\//, '')}`"
                         style="text-decoration: none; color: inherit;"
                         class="mx-4"
                     >
@@ -90,7 +89,7 @@
             </v-navigation-drawer>
 
             <!-- Main content -->
-            <v-main style="height: 100vh;">
+            <v-main style="height: 100%;">
                 <slot />
             </v-main>
         </v-layout>
@@ -116,8 +115,5 @@ const userMenuItems = ref<Array<{ title: string, icon: string, color: string }>>
 </script>
 
 <style scoped lang="scss">
-.bg-background {
-  position: relative;
-  z-index: 1;
-}
+
 </style>
