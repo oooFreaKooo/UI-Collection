@@ -84,6 +84,12 @@ const collections = ref([
         cssLink: 'text',
         vuetifyLink: 'v-text',
     },
+    {
+        title: 'Cursor',
+        subtitle: 'CSS-only and Vuetify cursor effects',
+        cssLink: 'cursor',
+        vuetifyLink: 'v-cursor',
+    },
 ])
 </script>
 
