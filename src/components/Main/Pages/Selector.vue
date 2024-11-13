@@ -24,14 +24,14 @@
             <v-btn
                 :disabled="!hasPrev"
                 color="warning"
-                class="my-1"
+                class="ma-2"
                 @click="prevComponent"
             >
                 Prev
             </v-btn>
             <v-btn
                 :disabled="!hasNext"
-                class="my-1"
+                class="ma-2"
                 color="success"
                 @click="nextComponent"
             >
