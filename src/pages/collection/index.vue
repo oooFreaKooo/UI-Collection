@@ -67,10 +67,10 @@ const collections = ref([
         vuetifyLink: 'v-cards',
     },
     {
-        title: 'Carousels',
-        subtitle: 'CSS-only and Vuetify carousels for seamless UI',
-        cssLink: 'carousels',
-        vuetifyLink: 'v-carousels',
+        title: 'Sliders',
+        subtitle: 'CSS-only and Vuetify sliders for seamless UI',
+        cssLink: 'sliders',
+        vuetifyLink: 'v-sliders',
     },
     {
         title: 'Grids',
