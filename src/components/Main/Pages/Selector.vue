@@ -1,6 +1,5 @@
 <template>
     <v-row>
-        <!-- Dropdown to select component -->
         <v-col
             cols="6"
             md="4"
