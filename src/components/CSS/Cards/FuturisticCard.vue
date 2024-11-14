@@ -65,8 +65,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&family=Space+Mono&display=swap');
-
 .screen > .screen-content > .screen-user > :is(.name, .link) {
   font-family: "Source Code Pro", monospace;
   color: white;
