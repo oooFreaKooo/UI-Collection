@@ -85,6 +85,12 @@ const collections = ref([
         vuetifyLink: 'v-text',
     },
     {
+        title: 'Buttons',
+        subtitle: 'CSS-only and Vuetify buttons for consistent UI',
+        cssLink: 'buttons',
+        vuetifyLink: 'v-buttons',
+    },
+    {
         title: 'Cursor',
         subtitle: 'CSS-only and Vuetify cursor effects',
         cssLink: 'cursor',
