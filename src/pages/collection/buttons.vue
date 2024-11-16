@@ -28,7 +28,7 @@ const pageFolder = 'Buttons'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = ['AnimatedLikeButton']
+const componentOptions = [ 'AnimatedLikeButton', 'AnimatedCheckbox' ]
 
 // Watch for component selection changes
 watch(
