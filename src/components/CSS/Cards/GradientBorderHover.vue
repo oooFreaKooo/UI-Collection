@@ -40,11 +40,9 @@ const borderColors = [
 </script>
 
 <style scoped>
-* {
-  --card-color: rgb(25, 25, 25);
-}
-
 .main-body {
+  --card-color: rgb(25, 25, 25);
+  position: relative;
   background-color: rgb(20, 20, 20);
   display: grid;
   height: 100vh;
@@ -134,9 +132,9 @@ const borderColors = [
   height: 100%;
   left: 0;
   opacity: 0.15;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 0;
 }
 </style>
