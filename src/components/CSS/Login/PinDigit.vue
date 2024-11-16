@@ -5,9 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onBeforeUnmount, defineProps } from 'vue'
-
-// Define props
 const props = defineProps<{
     focused: boolean
     value: string
