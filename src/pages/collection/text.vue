@@ -1,7 +1,6 @@
 <template>
     <div class="banner">
         <v-container>
-            <!-- Use the Selector component -->
             <Selector
                 v-model="selectedComponent"
                 :component-options="componentOptions"
@@ -15,7 +14,6 @@
                 type="CSS"
             />
 
-            <!-- Preview selected component -->
             <component
                 :is="selectedComponentInstance"
                 v-if="selectedComponentInstance"
@@ -62,52 +60,10 @@ watch(
     overflow: hidden;
 }
 
-.banner .dynamic-component {
+.dynamic-component {
+    position: relative;
     display: flex;
     align-items: center;
-    height: 70%;
-}
-
-.banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/images/valentin-petrov-m-mal-01.jpg');
-    background-size: cover;
-    background-position: center;
-    animation: bgZoomIn 4s ease-in-out 1 forwards;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('/images/after.png');
-    background-size: cover;
-    background-position: top;
-    transform: scale(2);
-    animation: bgZoomOut 4s ease-in-out 1 forwards;
-    z-index: -1;
-    pointer-events: none;
-}
-
-@keyframes bgZoomIn {
-from {
-  transform: scale(1.2);
-}
-to {
-  transform: scale(1);
-}
-}
-
-@keyframes bgZoomOut {
-from {
-  transform: scale(1);
-}
-to {
-  transform: scale(2);
-}
+    height: 50%;
 }
 </style>

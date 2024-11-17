@@ -61,8 +61,6 @@ button {
 
 #app {
   background: rgb(10,10,10);
-  height: 100vh;
-  width: 100%;
   margin: 0;
   padding: 0;
   display: flex;
