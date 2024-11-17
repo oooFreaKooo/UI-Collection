@@ -31,7 +31,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    'InteractiveTitleAnimation', 'SVGStrokeAnimation', 'SparkleText', 'GlitchEffect1', 'GlitchEffect2',
+    'InteractiveTitleAnimation', 'SVGStrokeAnimation', 'SparkleText', 'GlitchEffect1', 'GlitchEffect2', 'GlitchEffect3',
 ]
 
 // Watch for component selection changes
