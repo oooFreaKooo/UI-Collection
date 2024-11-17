@@ -29,7 +29,9 @@ const pageFolder = 'Pages'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = [ 'AppMenuLockScreen', 'TransitionPortfolio' ]
+const componentOptions = [
+    'FullScreenPortfolioSlider', 'AppMenuLockScreen', 'TransitionPortfolio',
+]
 
 // Watch for component selection changes
 watch(
