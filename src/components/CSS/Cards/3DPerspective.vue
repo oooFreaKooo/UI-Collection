@@ -94,8 +94,8 @@ $clip: -0px;
   --background-color: var(--color-background, #fff);
   --text-color: var(--color-text, #fff);
   --accent-color: var(--color-accent, rgba(255, 255, 255, 0.1));
-  --shadow-color: var(--color-shadow, rgba(0, 0, 0, 0.65));
-  --card-shadow-color: var(--color-card-shadow, rgba(0, 0, 0, 0.8));
+  --shadow-color: var(--color-shadow, rgba(0, 0, 0, 0.5));
+  --card-shadow-color: var(--color-card-shadow, rgba(0, 0, 0, 0.4));
   --shine-color: var(--color-shine, rgba(255, 255, 255, 0.1));
   height: 100vh;
   font-family: 'Roboto', sans-serif;
@@ -160,7 +160,7 @@ $clip: -0px;
   z-index: -1;
   background: var(--card-shadow-color);
   transform: scale(0.5, 0.5);
-  box-shadow: 0 0 30px 10px var(--shadow-color);
+  box-shadow: 0 0 25px 10px var(--shadow-color);
 }
 
 .card-front,
