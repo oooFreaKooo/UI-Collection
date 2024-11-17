@@ -50,7 +50,7 @@ defineExpose({ replayAnimation })
 <style scoped>
 .icon-animation {
   fill: transparent;
-  stroke: #ffffff;
+  stroke: currentColor;
   stroke-width: v-bind('strokeWidth');
   stroke-dasharray: v-bind('strokeDasharray');
   stroke-dashoffset: v-bind('strokeDashoffset');
@@ -65,7 +65,7 @@ defineExpose({ replayAnimation })
     fill: transparent;
   }
   100% {
-    fill: #fff;
+    fill: currentColor;
     stroke-dashoffset: 0;
   }
 }
