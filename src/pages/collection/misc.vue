@@ -29,7 +29,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    'PolyrhythmicSpiral', 'LayerLogoAnimation', 'MusicalBlob',
+    'PolyrhythmicSpiral', 'LayerLogoAnimation', 'MusicalBlob', 'MusicVisualizer',
 ]
 
 // Watch for component selection changes
