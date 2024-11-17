@@ -1,41 +1,22 @@
 <template>
-    <div
-        id="app"
-        :style="{
-            '--animation-iteration': isLooping ? 'infinite' : '1',
-        }"
-    >
+    <div>
         <div id="wrapper">
             <h1
                 class="glitch"
-                data-text="glitch"
+                :data-text="text"
             >
-                glitch
+                {{ text }}
             </h1>
-            <span class="sub">EFFECT</span>
+            <span class="sub">{{ subtext }}</span>
         </div>
-        <button
-            v-if="!isLooping"
-            @click="isLooping = true"
-        >
-            Loop
-        </button>
     </div>
 </template>
 
 <script setup>
-const props = defineProps({
-    loop: { type: Boolean, default: false },
+defineProps({
+    text: { type: String, default: 'glitch' },
+    subtext: { type: String, default: 'EFFECT' },
 })
-
-const isLooping = ref(props.loop)
-
-watch(
-    () => props.loop,
-    (newVal) => {
-        isLooping.value = newVal
-    },
-)
 </script>
 
 <style scoped lang="scss">
@@ -46,31 +27,9 @@ h1 {
   font-family: 'Montserrat', sans-serif;
 }
 
-button {
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-#app {
-  background: rgb(10,10,10);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
 #wrapper {
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
@@ -90,24 +49,24 @@ button {
 
 .glitch {
   position: relative;
-  color: white;
+  color: currentColor;
   font-size: 4em;
   letter-spacing: .5em;
-  animation: glitch-skew 1s var(--animation-iteration) linear alternate-reverse;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
 
   &::before {
     @include glitchCopy;
     left: 2px;
     text-shadow: -2px 0 #ff00c1;
     clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s var(--animation-iteration) linear alternate-reverse;
+    animation: glitch-anim 5s infinite linear alternate-reverse;
   }
 
   &::after {
     @include glitchCopy;
     left: -2px;
     text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-    animation: glitch-anim2 1s var(--animation-iteration) linear alternate-reverse;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
   }
 }
 

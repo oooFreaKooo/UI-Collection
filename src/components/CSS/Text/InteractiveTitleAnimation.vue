@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="main-body">
         <h1
             :data-value="originalText"
             @mouseover="handleMouseOver"
@@ -51,9 +51,15 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.main-body{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 h1 {
     font-family: 'Space Mono', monospace;
-    font-size: clamp(3rem, 10vw, 10rem);
+    font-size: clamp(1.5rem, 5vw, 5rem);
     color: black;
     padding: 0 clamp(1rem, 2vw, 3rem);
     border-radius: clamp(0.4rem, 0.75vw, 1rem);

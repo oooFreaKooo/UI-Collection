@@ -49,12 +49,6 @@ onMounted(() => {
 
 <style scoped>
 .sparkle-text {
-  background-color: rgb(10, 10, 10);
-  display: grid;
-  height: 100vh;
-  margin: 0px;
-  overflow: hidden;
-  place-items: center;
   --purple: rgb(123, 31, 162);
   --violet: rgb(103, 58, 183);
   --pink: rgb(244, 143, 177);
@@ -91,7 +85,6 @@ onMounted(() => {
 }
 
 h1 {
-  color: white;
   font-family: 'Space Mono';
   font-size: clamp(2em, 2vw, 4em);
   font-weight: 400;

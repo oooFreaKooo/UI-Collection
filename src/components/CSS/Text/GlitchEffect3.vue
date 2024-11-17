@@ -70,21 +70,15 @@ defineProps({
 }
 
 $offset: 6px;
-$bgcolor: #111;
 
 .main-body{
-  background: $bgcolor;
   font-family: 'Bungee', cursive;
   text-transform: uppercase;
   font-size: 80px;
   font-weight: bold;
-}
-
-#root{
-  position: absolute;
-  top: 50%;
-  @include transform(translateY(-50%) translateX(-50%));
-  left: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #text{

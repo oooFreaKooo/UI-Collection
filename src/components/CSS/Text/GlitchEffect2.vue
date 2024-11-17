@@ -3,7 +3,6 @@
         <div class="wrapper">
             <h1
                 class="glitch"
-                :class="{ loop: isLooping }"
                 :style="{
                     '--dynamic-text': `'${text}'`,
                 }"
@@ -11,53 +10,19 @@
                 {{ text }}
             </h1>
         </div>
-        <button
-            v-if="!isLooping"
-            @click="isLooping = true"
-        >
-            Loop
-        </button>
     </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
     text: { type: String, default: 'Glitch Text' },
-    loop: { type: Boolean, default: false },
 })
-
-const isLooping = ref(props.loop)
-
-watch(
-    () => props.loop,
-    (newVal) => {
-        isLooping.value = newVal
-    },
-)
 </script>
 
 <style scoped lang="scss">
 @use "sass:math";
 
 $content: v-bind('text');
-.main-body {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-}
-
-button {
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  color: white;
-  border: 1px solid white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
 
 .wrapper {
   width: 100%;
@@ -68,7 +33,7 @@ button {
 }
 
 h1.glitch {
-  color: white;
+  color: currentColor;
   font-family: sans-serif;
   font-weight: 800;
   position: relative;
@@ -78,12 +43,12 @@ h1.glitch {
   &::before,
   &::after {
     padding: 30px;
-    color: white;
+    color: currentColor;
     content: var(--dynamic-text);
     position: absolute;
     width: 100%;
     height: 100%;
-    background: black;
+    background: inherit;
     overflow: hidden;
     top: 0;
   }
@@ -108,16 +73,6 @@ h1.glitch {
     animation-delay: 0s;
     animation-iteration-count: infinite;
     animation-direction: reverse-alternate;
-  }
-
-  &.loop::before,
-  &.loop::after {
-    animation-iteration-count: infinite;
-  }
-
-  &:not(.loop)::before,
-  &:not(.loop)::after {
-    animation-iteration-count: 1;
   }
 }
 
