@@ -361,6 +361,7 @@ const projects = [
     position: relative;
     height: 100vh;
     font-family: 'Poppins';
+    color: white;
 }
 
 a{
