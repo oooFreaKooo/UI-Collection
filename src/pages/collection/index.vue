@@ -97,6 +97,12 @@ const collections = ref([
         vuetifyLink: 'v-background',
     },
     {
+        title: 'Timelines',
+        subtitle: 'CSS-only and Vuetify timelines for consistent UI',
+        cssLink: 'timelines',
+        vuetifyLink: 'v-timelines',
+    },
+    {
         title: 'Cursor',
         subtitle: 'CSS-only and Vuetify cursor effects',
         cssLink: 'cursor',
