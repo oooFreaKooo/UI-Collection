@@ -57,22 +57,20 @@ const toggleAnimation = () => {
 
 <style scoped>
 .main-body {
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  background: black;
-  overflow: hidden;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+  background-color: black;
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transform: scale(1.8);
+  transform-origin: top center;
+  padding-top: 20px;
 }
 
 #button {
   all: unset;
-  width: 30vmin;
+  width: 30px;
   cursor: pointer;
   position: relative;
   -webkit-tap-highlight-color: transparent;

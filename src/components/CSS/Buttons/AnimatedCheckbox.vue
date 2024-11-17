@@ -17,6 +17,7 @@
 <style lang="scss" scoped>
 $blue: rgb(41, 182, 246);
 .main-body {
+  background-color: black;
   position: relative;
   top: 0;
   display: flex;
@@ -66,7 +67,7 @@ $blue: rgb(41, 182, 246);
   }
 
   .checkbox {
-    border: 2px solid black;
+    border: 2px solid white;
     border-radius: 2px;
     height: 16px;
     position: relative;
@@ -87,7 +88,6 @@ $blue: rgb(41, 182, 246);
     }
 
     &:before {
-      background-color: rgba(242, 242, 242, 0.9);
       border-radius: 50%;
       height: 5px;
       width: 5px;
