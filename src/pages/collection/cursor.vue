@@ -27,7 +27,7 @@ const pageFolder = 'Cursor'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = ['CursorGlowBlob']
+const componentOptions = [ 'CursorGlowBlob', 'WigglySquiggly' ]
 
 // Watch for component selection changes
 watch(
