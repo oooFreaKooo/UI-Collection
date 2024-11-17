@@ -91,6 +91,12 @@ const collections = ref([
         vuetifyLink: 'v-buttons',
     },
     {
+        title: 'Backgrounds',
+        subtitle: 'CSS-only and Vuetify backgrounds for consistent UI',
+        cssLink: 'background',
+        vuetifyLink: 'v-background',
+    },
+    {
         title: 'Cursor',
         subtitle: 'CSS-only and Vuetify cursor effects',
         cssLink: 'cursor',

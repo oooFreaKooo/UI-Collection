@@ -390,7 +390,7 @@ header nav a{
 .tab{
     overflow: hidden;
     position: relative;
-    background-image: url(/images/bg.png);
+    background-image: url('/images/bg2.png');
     background-size: 50%;
 }
 
