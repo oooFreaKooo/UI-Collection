@@ -28,7 +28,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    '3DPerspective', 'ArticleCard', 'MovieCardResponsive', 'FuturisticCard', 'EvervaultHover', 'TrippyCardBgChange', 'SwipeHoverCards', 'GradientBorderHover', 'GlowCursonHover',
+    '3DPerspective', 'ArticleCard', 'MovieCardResponsive', 'CardSlider', 'FuturisticCard', 'EvervaultHover', 'TrippyCardBgChange', 'SwipeHoverCards', 'GradientBorderHover', 'GlowCursonHover',
 ]
 
 // Watch for component selection changes
