@@ -97,6 +97,12 @@ const collections = ref([
         vuetifyLink: 'v-background',
     },
     {
+        title: 'Forms',
+        subtitle: 'CSS-only and Vuetify forms for consistent UI',
+        cssLink: 'forms',
+        vuetifyLink: 'v-forms',
+    },
+    {
         title: 'Timelines',
         subtitle: 'CSS-only and Vuetify timelines for consistent UI',
         cssLink: 'timelines',
