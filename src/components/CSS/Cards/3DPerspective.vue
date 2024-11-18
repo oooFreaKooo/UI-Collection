@@ -40,13 +40,20 @@ const cardSubtitle = ref<HTMLElement | null>(null)
 const cardShine = ref<HTMLElement | null>(null)
 const cardShadow = ref<HTMLElement | null>(null)
 
-onMounted(() => {
-    if (!card.value || !cardTitle.value || !cardSubtitle.value || !cardShine.value || !cardShadow.value) { return }
+onMounted(async () => {
+    await nextTick()
+    if (!card.value || !cardTitle.value || !cardSubtitle.value || !cardShine.value || !cardShadow.value) {
+        return
+    }
 
     const currentMousePos = { x: 0, y: 0 }
     const mouseFromCenter = { x: 0, y: 0 }
 
     document.addEventListener('mousemove', (event) => {
+        if (!card.value || !cardShine.value || !cardShadow.value || !cardTitle.value || !cardSubtitle.value) {
+            return // Skip if any element is null
+        }
+
         const wHeight = window.innerHeight
         const wWidth = window.innerWidth
 
@@ -66,22 +73,13 @@ onMounted(() => {
         const mousePositionX = (currentMousePos.x / wWidth) * 100
         const mousePositionY = 50 + (currentMousePos.y / wHeight) * 10
 
-        // Gradient angle and opacity for card shine effect
-        cardShine.value!.style.background = `linear-gradient(${angle}deg, rgba(255,255,255,${(currentMousePos.y / wHeight) * 0.7}) 0%,rgba(255,255,255, 0) 80%)`
-
-        // Card position and angle
-        card.value!.style.transform = `translate3d(${trans1}, ${trans2}, 0) scale(1) rotateX(${around1}) rotateY(${around2})`
-        card.value!.style.backgroundPosition = `${mousePositionX}% ${(currentMousePos.y / wHeight) * 50}%`
-        card.value!.style.backgroundPosition = `${mousePositionX}% ${mousePositionY}%`
-
-        // Card shadow position and angle
-        cardShadow.value!.style.transform = `scale(0.9, 0.9) translateX(${mouseFromCenter.x * -0.02 + 12}px) translateY(${mouseFromCenter.y * -0.02 + 12}px) scale(1.0) rotateY(${(mouseFromCenter.x / 25) * 0.5}deg) rotateX(${mouseFromCenter.y / -25}deg)`
-
-        // Card title position
-        cardTitle.value!.style.transform = `translateX(${(mouseFromCenter.x / 25) * 0.7}px) translateY(${(mouseFromCenter.y / 25) * 1.65}px)`
-
-        // Card subtitle position
-        cardSubtitle.value!.style.transform = `translateX(${(mouseFromCenter.x / 25) * 0.5}px) translateY(${(mouseFromCenter.y / 25) * 1.15}px) translateZ(60px)`
+        // Update styles
+        cardShine.value.style.background = `linear-gradient(${angle}deg, rgba(255,255,255,${(currentMousePos.y / wHeight) * 0.7}) 0%,rgba(255,255,255, 0) 80%)`
+        card.value.style.transform = `translate3d(${trans1}, ${trans2}, 0) scale(1) rotateX(${around1}) rotateY(${around2})`
+        card.value.style.backgroundPosition = `${mousePositionX}% ${mousePositionY}%`
+        cardShadow.value.style.transform = `scale(0.9, 0.9) translateX(${mouseFromCenter.x * -0.02 + 12}px) translateY(${mouseFromCenter.y * -0.02 + 12}px) scale(1.0) rotateY(${(mouseFromCenter.x / 25) * 0.5}deg) rotateX(${mouseFromCenter.y / -25}deg)`
+        cardTitle.value.style.transform = `translateX(${(mouseFromCenter.x / 25) * 0.7}px) translateY(${(mouseFromCenter.y / 25) * 1.65}px)`
+        cardSubtitle.value.style.transform = `translateX(${(mouseFromCenter.x / 25) * 0.5}px) translateY(${(mouseFromCenter.y / 25) * 1.15}px) translateZ(60px)`
     })
 })
 </script>

@@ -67,7 +67,6 @@ onUnmounted(() => {
 <style scoped>
 .screen > .screen-content > .screen-user > :is(.name, .link) {
   font-family: "Source Code Pro", monospace;
-  color: white;
   text-align: center;
   text-transform: uppercase;
 }
@@ -100,7 +99,6 @@ onUnmounted(() => {
 
 /* Variables */
 * {
-  --background-rgb: 15, 15, 15;
   --blue-rgb: 10, 109, 183;
   --primary-rgb: var(--blue-rgb);
 }
@@ -109,7 +107,6 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-color: rgb(var(--background-rgb));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -295,7 +292,6 @@ onUnmounted(() => {
 
 .screen-user .link {
   font-family: 'Source Code Pro', monospace;
-  color: white;
   text-align: center;
   text-transform: uppercase;
   opacity: 0.8;

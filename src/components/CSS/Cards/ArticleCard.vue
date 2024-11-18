@@ -115,7 +115,6 @@ $blue:#1e76e3;
   padding:0px;
   margin:0;
   font-family:$font;
-  background: $blue;
   -webkit-font-smoothing: antialiased;
 }
 
