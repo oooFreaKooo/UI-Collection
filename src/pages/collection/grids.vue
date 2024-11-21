@@ -27,7 +27,9 @@ const pageFolder = 'Grids'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = [ 'MasonryImages', 'MasonryText' ]
+const componentOptions = [
+    'ImageCollage', 'MasonryImages', 'MasonryText',
+]
 
 // Watch for component selection changes
 watch(
