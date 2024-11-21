@@ -29,7 +29,9 @@ const pageFolder = 'Sliders'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = [ '3DCardSlider', 'SlidingParallaxImg' ]
+const componentOptions = [
+    '3DCardSlider', 'MarqueeExamples', 'SlidingParallaxImg',
+]
 
 // Watch for component selection changes
 watch(
