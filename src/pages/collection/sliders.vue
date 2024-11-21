@@ -30,7 +30,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    '3DCardSlider', 'MarqueeExamples', 'SlidingParallaxImg',
+    '3DCardSlider', 'VoyageSlider', 'MarqueeExamples', 'SlidingParallaxImg',
 ]
 
 // Watch for component selection changes
