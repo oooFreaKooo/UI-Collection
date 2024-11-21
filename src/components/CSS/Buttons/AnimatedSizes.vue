@@ -9,14 +9,14 @@
             <span
                 class="span1 mdi"
                 :class="[
-                    'mdi-size-' + size[0],
+                    'mdi-size-' + size,
                     activeIndex === index ? 'scaleOut' : 'scaleIn',
                 ]"
             />
             <span
                 class="span2 mdi"
                 :class="[
-                    'mdi-size-' + size[1],
+                    'mdi-size-' + size,
                     activeIndex === index ? 'scaleOut' : 'scaleIn',
                 ]"
             />
@@ -25,8 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
 const activeIndex = ref<number | null>(null)
 
 const toggleAnimation = (index: number) => {
@@ -34,12 +32,7 @@ const toggleAnimation = (index: number) => {
 }
 
 const sizeClasses = [
-    [ 'xs', 'xs' ],
-    [ 's', 's' ],
-    [ 'm', 'm' ],
-    [ 'l', 'l' ],
-    [ 'xl', 'xl' ],
-    [ 'xl', 'xxl' ],
+    'xs', 's', 'm', 'l', 'xl', 'xxl',
 ]
 </script>
 
@@ -55,8 +48,7 @@ button {
   margin: 0 10px;
   cursor: pointer;
   background-color: #ffffff;
-  border: none;
-  border-radius: 5px;
+  border: 3px solid #ffffff;
   padding: 0;
   font-size: 3rem;
   font-weight: bold;
@@ -71,11 +63,6 @@ button {
 }
 
 button.active {
-  transform: scale(1.1);
-}
-
-button:hover {
-  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.527);
   transform: scale(1.1);
 }
 
