@@ -27,7 +27,9 @@ const pageFolder = 'Background'
 const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
-const componentOptions = [ 'IncAnimation', 'OpenerAnimation' ]
+const componentOptions = [
+    'GsapScrollSVGMask', 'IncAnimation', 'OpenerAnimation',
+]
 
 // Watch for component selection changes
 watch(
