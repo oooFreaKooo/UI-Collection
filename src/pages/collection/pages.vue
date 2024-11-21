@@ -30,7 +30,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    'FullScreenPortfolioSlider', 'AppMenuLockScreen', 'TransitionPortfolio',
+    'FullScreenPortfolioSlider', 'ProductShowcaseUI', 'AppMenuLockScreen', 'TransitionPortfolio',
 ]
 
 // Watch for component selection changes
