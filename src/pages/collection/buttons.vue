@@ -29,7 +29,7 @@ const showCodeDialog = ref(false)
 const selectedComponent = ref<string>('')
 const selectedComponentInstance = ref(null)
 const componentOptions = [
-    'AnimatedToggle', 'MobileMenuToggle', 'AnimatedLikeButton', 'AnimatedCheckbox',
+    'AnimatedToggle', '3DToggle', 'MobileMenuToggle', 'AnimatedLikeButton', 'AnimatedCheckbox',
 ]
 
 // Watch for component selection changes
