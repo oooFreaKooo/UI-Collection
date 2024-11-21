@@ -198,6 +198,90 @@
 <script lang="ts" setup>
 // Credits: https://github.com/devloop01/voyage-slider
 
+const lerpAmount = ref(0.06)
+const rotDeg = { current: { x: 0, y: 0 }, target: { x: 0, y: 0 } }
+const bgPos = { current: { x: 0, y: 0 }, target: { x: 0, y: 0 } }
+
+// Mouse event handlers for tilt effect
+const onMouseMove = (event: MouseEvent) => {
+    lerpAmount.value = 0.1
+    const { offsetX, offsetY, currentTarget } = event
+
+    if (!(currentTarget instanceof HTMLElement)) { return }
+
+    const ox = (offsetX - currentTarget.clientWidth * 0.5) / (Math.PI * 3)
+    const oy = -(offsetY - currentTarget.clientHeight * 0.5) / (Math.PI * 4)
+
+    rotDeg.target = { x: ox, y: oy }
+    bgPos.target = { x: -ox * 0.3, y: oy * 0.3 }
+}
+
+const onMouseLeave = () => {
+    lerpAmount.value = 0.06
+
+    rotDeg.target = { x: 0, y: 0 }
+    bgPos.target = { x: 0, y: 0 }
+}
+
+// Utility to apply lerp effect
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+
+// Frame update to animate tilt effect
+const updateFrame = () => {
+    rotDeg.current.x = lerp(rotDeg.current.x, rotDeg.target.x, lerpAmount.value)
+    rotDeg.current.y = lerp(rotDeg.current.y, rotDeg.target.y, lerpAmount.value)
+    bgPos.current.x = lerp(bgPos.current.x, bgPos.target.x, lerpAmount.value)
+    bgPos.current.y = lerp(bgPos.current.y, bgPos.target.y, lerpAmount.value)
+
+    const currentSlideInner = document.querySelector('.slide[data-current] .slide__inner')
+    const currentSlideInfoInner = document.querySelector('.slide-info[data-current] .slide-info__inner');
+
+    [ currentSlideInner, currentSlideInfoInner ].forEach((el) => {
+        if (!(el instanceof HTMLElement)) { return }
+        el.style.setProperty('--rotX', `${rotDeg.current.y.toFixed(2)}deg`)
+        el.style.setProperty('--rotY', `${rotDeg.current.x.toFixed(2)}deg`)
+        el.style.setProperty('--bgPosX', `${bgPos.current.x.toFixed(2)}%`)
+        el.style.setProperty('--bgPosY', `${bgPos.current.y.toFixed(2)}%`)
+    })
+
+    requestAnimationFrame(updateFrame)
+}
+
+// Function to set up tilt effect for the current slide
+const setupCurrentSlideTilt = () => {
+    const currentSlide = document.querySelector('.slide[data-current]') as HTMLElement | null
+
+    if (currentSlide) {
+        currentSlide.addEventListener('mousemove', onMouseMove)
+        currentSlide.addEventListener('mouseleave', onMouseLeave)
+    }
+}
+
+// Cleanup previous slide listeners
+const cleanupSlideListeners = () => {
+    const previousSlide = document.querySelector('.slide') as HTMLElement | null
+
+    if (previousSlide) {
+        previousSlide.removeEventListener('mousemove', onMouseMove)
+        previousSlide.removeEventListener('mouseleave', onMouseLeave)
+    }
+}
+
+// Mount lifecycle to initialize interactions
+onMounted(() => {
+    updateFrame()
+    setupCurrentSlideTilt()
+})
+
+// Watch for slide changes and update listeners dynamically
+watch(
+    () => document.querySelector('.slide[data-current]'),
+    () => {
+        cleanupSlideListeners()
+        setupCurrentSlideTilt()
+    },
+)
+
 const slides = ref<NodeListOf<HTMLElement>>(document.querySelectorAll('.slide'))
 const slideInfos = ref<NodeListOf<HTMLElement>>(document.querySelectorAll('.slide-info'))
 
@@ -248,6 +332,10 @@ const updateSlideState = (direction: number) => {
     Object.values(current).forEach(el => el?.setAttribute('data-current', ''))
     Object.values(previous).forEach(el => el?.setAttribute('data-previous', ''))
     Object.values(next).forEach(el => el?.setAttribute('data-next', ''))
+
+    // Update tilt effect for the new current slide
+    cleanupSlideListeners()
+    setupCurrentSlideTilt()
 }
 
 // Event handlers
